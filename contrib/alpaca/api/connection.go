@@ -154,16 +154,16 @@ func (p *AlpacaWebSocket) subscribe() error {
 		resp string
 	)
 	/*
-		ws.send('{"action": "authenticate", "data": {"key_id": "YOU_API_KEY", "secret_key": "YOUR_API_SECRET"}}')
+		ws.send('{"action": "auth", "key": "YOU_API_KEY", "secret": "YOUR_API_SECRET"}')
 		ws.send('{"action": "listen","data": {"streams": ["Q.VOO", "T.AAPL"]}}')
 	*/
 	authMsg := fmt.Sprintf(
-		`{"action":"authenticate","data":{"key_id":"%s","secret_key":"%s"}}`,
+		`{"action": "auth", "key": "%s", "secret": "%s"}`,
 		p.apiKey,
 		p.apiSecret,
 	)
 	subMsg := fmt.Sprintf(
-		`{"action": "listen","data": {"streams": %s}}`,
+		`{"action": "listen", "data": {"streams": %s}}`,
 		strings.ReplaceAll(fmt.Sprintf("%q", p.subscriptions), " ", ","),
 	)
 
