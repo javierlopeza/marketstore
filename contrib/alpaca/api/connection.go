@@ -167,6 +167,8 @@ func (p *AlpacaWebSocket) subscribe() error {
 		strings.ReplaceAll(fmt.Sprintf("%q", p.subscriptions), " ", ","),
 	)
 
+	log.Info("[javierlopeza] %s", authMsg)
+
 	// Authenticate
 	resp, err = p.exchangeMessage(authMsg, `"authorized"`)
 	if err != nil {
