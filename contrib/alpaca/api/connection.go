@@ -201,7 +201,6 @@ func (p *AlpacaWebSocket) exchangeMessage(send, expect string) (response string,
 		return "", err
 	}
 
-	var response string
 	for {
 		_, pp, err := p.conn.ReadMessage()
 		if err != nil {
