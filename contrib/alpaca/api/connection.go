@@ -170,7 +170,7 @@ func (p *AlpacaWebSocket) subscribe() error {
 	log.Info("[javierlopeza] %s", authMsg)
 
 	// Authenticate
-	resp, err = p.exchangeMessage(authMsg, `"authorized"`)
+	resp, err = p.exchangeMessage(authMsg, `"authenticated"`)
 	if err != nil {
 		log.Error("[alpaca] unable to authenticate {%s:%v,%s:%v}",
 			"response", resp,
