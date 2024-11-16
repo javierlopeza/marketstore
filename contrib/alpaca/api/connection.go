@@ -201,15 +201,20 @@ func (p *AlpacaWebSocket) exchangeMessage(send, expect string) (response string,
 		return "", err
 	}
 
-	_, pp, err := p.conn.ReadMessage()
-	if err != nil {
-		return "", err
-	}
-
-	response = string(pp)
-	if !strings.Contains(response, expect) {
+	var response string
+	for {
+		_, pp, err := p.conn.ReadMessage()
+		if err != nil {
+			return "", err
+		}
+	
+		response = string(pp)
+		if strings.Contains(response, expect) {
+			break  // Exit the loop when the expected response is found
+		}
+	
+		// Optionally, handle unexpected messages
 		log.Info("[javierlopeza] response: %s, expect: %s", response, expect)
-		return response, errExchangeMessage
 	}
 
 	return response, nil
