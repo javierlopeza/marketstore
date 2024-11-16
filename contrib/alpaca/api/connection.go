@@ -208,6 +208,7 @@ func (p *AlpacaWebSocket) exchangeMessage(send, expect string) (response string,
 
 	response = string(pp)
 	if !strings.Contains(response, expect) {
+		log.Info("[javierlopeza] response: %s, expect: %s", response, expect)
 		return response, errExchangeMessage
 	}
 
