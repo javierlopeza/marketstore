@@ -1,0 +1,8 @@
+services:
+  marketstore:
+    image: ghcr.io/javierlopeza/marketstore:latest
+    ports:
+      - 5993:5993
+    volumes:
+      - ./mkts.yml:/etc/mkts.yml
+      - ./data:/data
