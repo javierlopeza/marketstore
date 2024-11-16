@@ -216,6 +216,6 @@ func (p *AlpacaWebSocket) exchangeMessage(send, expect string) (response string,
 		// Optionally, handle unexpected messages
 		log.Info("[javierlopeza] response: %s, expect: %s", response, expect)
 	}
-
+	
 	return response, nil
 }
